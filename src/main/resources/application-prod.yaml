@@ -6,10 +6,11 @@ management.endpoints.web.exposure.include: "*"
 
 spring:
   datasource:
-    url: ${DATABASE_URL}
+    # url: ${DATABASE_URL}
     #    url: jdbc:mysql://localhost:3306/board
+    url: jdbc:mariadb://mariadb-0.mariadb.default.svc/GOORM
     username: root
-    password: 123456789
+    password: "123456789"
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
