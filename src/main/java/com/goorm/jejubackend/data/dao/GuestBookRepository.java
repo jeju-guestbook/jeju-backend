@@ -1,11 +1,12 @@
 package com.goorm.jejubackend.data.dao;
 
 import com.goorm.jejubackend.data.entity.GuestBook;
+import java.util.List;
+import org.springframework.data.repository.Repository;
 
-public interface GuestBookRepository {
+public interface GuestBookRepository extends Repository<GuestBook, Long> {
 
-    GuestBook insertGuestBook(GuestBook guestBook);
+    void save(GuestBook guestBook);
 
-    GuestBook selectGuestBookList(Integer page);
-
+    List<GuestBook> findAll();
 }

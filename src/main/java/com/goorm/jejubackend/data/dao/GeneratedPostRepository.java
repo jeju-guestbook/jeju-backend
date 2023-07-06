@@ -2,10 +2,11 @@ package com.goorm.jejubackend.data.dao;
 
 import com.goorm.jejubackend.data.entity.GeneratedPost;
 import java.util.List;
+import org.springframework.data.repository.Repository;
 
-public interface GeneratedPostRepository {
+public interface GeneratedPostRepository extends Repository<GeneratedPost, Long> {
 
-    GeneratedPost insertGeneratedPost(GeneratedPost generatedPost);
+    void save(GeneratedPost generatedPost);
 
-    List<GeneratedPost> selectMyGeneratedPost(Long id);
+    List<GeneratedPost> findAll();
 }
