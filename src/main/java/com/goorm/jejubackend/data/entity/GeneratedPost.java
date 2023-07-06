@@ -10,17 +10,21 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table
+@NoArgsConstructor
 public class GeneratedPost extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String s3ImgUrl;
+
     @Column(length = 1024, nullable = false)
-    private String generated_text;
+    private String generatedText;
 }
