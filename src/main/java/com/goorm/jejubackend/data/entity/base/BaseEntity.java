@@ -1,4 +1,4 @@
-package com.goorm.jejubackend.domain.base;
+package com.goorm.jejubackend.data.entity.base;
 
 import java.time.LocalDateTime;
 import javax.persistence.EntityListeners;

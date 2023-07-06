@@ -1,6 +1,8 @@
-package com.goorm.jejubackend.domain.generatedPost.entity;
+package com.goorm.jejubackend.data.entity;
 
-import com.goorm.jejubackend.domain.base.BaseEntity;
+import com.goorm.jejubackend.data.entity.base.BaseEntity;
+import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,11 +14,18 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class GeneratedPost extends BaseEntity {
+public class GuestBook extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String generated_text;
+    @Column
+    private LocalDateTime photo_created_at;
+
+    @Column
+    private String s3_img_url;
+
+    @Column
+    private String user_text;
 }
