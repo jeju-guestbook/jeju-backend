@@ -4,12 +4,6 @@ server:
 debug: false
 management.endpoints.web.exposure.include: "*"
 
-logging:
-  level:
-    com.goorm.jejubackend: debug
-    org.springframework.web.servlet: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
-
 spring:
   datasource:
     url: ${DATABASE_URL}
@@ -21,7 +15,6 @@ spring:
     defer-datasource-initialization: true
     hibernate.ddl-auto: create
     open-in-view: false
-    show-sql: true
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
