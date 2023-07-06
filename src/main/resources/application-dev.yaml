@@ -4,12 +4,6 @@ server:
 debug: false
 management.endpoints.web.exposure.include: "*"
 
-logging:
-  level:
-    com.goorm.jejubackend: debug
-    org.springframework.web.servlet: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
-
 spring:
   h2:
     console:

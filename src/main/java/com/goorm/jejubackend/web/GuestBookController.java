@@ -8,16 +8,29 @@ import com.goorm.jejubackend.data.dto.GuestBookResponseDto;
 import com.goorm.jejubackend.data.entity.GuestBook;
 import com.goorm.jejubackend.service.GuestBookService;
 import com.goorm.jejubackend.service.GeneratedPostService;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Blob;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.ImageIO;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.hibernate.Hibernate;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin
 @RestController
@@ -36,16 +49,20 @@ public class GuestBookController {
     }
 
     @PostMapping("/write")
-    public Long createGuestBook (
-        @RequestBody GuestBookRequestDto guestBookRequestDto
-    ){
+    public Long createGuestBook(
+        @RequestPart String datetime,
+        @RequestPart String user_text,
+        @RequestPart MultipartFile image
+    ) throws IOException {
         GuestBook guestBook = new GuestBook();
-        guestBook.setPhotoCreatedAt(guestBookRequestDto.getDatetime().atStartOfDay());
-        guestBook.setImage(guestBookRequestDto.getImage());
-        guestBook.setUserText(guestBookRequestDto.getUserText());
+        guestBook.setImage(image.getBytes());
 
-        GuestBook g = guestBookRepository.save(guestBook);
-        return g.getId();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        guestBook.setPhotoCreatedAt(LocalDate.parse(datetime, formatter));
+        guestBook.setUserText(user_text);
+
+        GuestBook saved = guestBookRepository.save(guestBook);
+        return saved.getId();
     }
 
     @PostMapping("/upload")
