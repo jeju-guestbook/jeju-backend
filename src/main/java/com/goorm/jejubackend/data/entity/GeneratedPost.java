@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -23,7 +24,8 @@ public class GeneratedPost extends BaseEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String s3ImgUrl;
+    @Lob
+    private byte[] image;
 
     @Column(length = 1024, nullable = false)
     private String generatedText;

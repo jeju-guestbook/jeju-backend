@@ -9,11 +9,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class GuestBookService {
 
-    public List<GuestBookResponseDto> getList(final Integer page) {
-        return new ArrayList<>();
-    }
-
-    public GuestBookResponseDto save(final GuestBookRequestDto guestBookRequestDto) {
-        return new GuestBookResponseDto();
-    }
 }

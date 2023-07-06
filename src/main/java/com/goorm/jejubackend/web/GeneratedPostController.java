@@ -1,7 +1,8 @@
 package com.goorm.jejubackend.web;
 
+import com.goorm.jejubackend.data.dao.GeneratedPostRepository;
 import com.goorm.jejubackend.data.dto.GeneratedPostResponseDto;
-import com.goorm.jejubackend.service.impl.GeneratedPostService;
+import com.goorm.jejubackend.service.GeneratedPostService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GeneratedPostController {
 
     private final GeneratedPostService generatedPostService;
+    private final GeneratedPostRepository generatedPostRepository;
 
     @GetMapping("/result")
     public GeneratedPostResponseDto getGeneratedPost() {

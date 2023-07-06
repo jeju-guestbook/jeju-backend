@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +28,8 @@ public class GuestBook extends BaseEntity {
     private LocalDateTime photoCreatedAt;
 
     @Column(nullable = false)
-    private String s3ImgUrl;
+    @Lob
+    private byte[] image;
 
     @Column(nullable = false)
     private String userText;

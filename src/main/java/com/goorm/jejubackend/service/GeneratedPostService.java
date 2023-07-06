@@ -1,4 +1,4 @@
-package com.goorm.jejubackend.service.impl;
+package com.goorm.jejubackend.service;
 
 import com.goorm.jejubackend.data.dto.GeneratedPostResponseDto;
 import java.util.ArrayList;
