@@ -1,43 +1,9 @@
-server:
-  port: 3000
-
-debug: false
-management.endpoints.web.exposure.include: "*"
-
-logging:
-  level:
-    com.goorm.jejubackend: debug
-    org.springframework.web.servlet: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
-
 spring:
-  datasource:
-    url: ${DATABASE_URL}
-#    url: jdbc:mysql://localhost:3306/board
-    username: root
-    password: 123456789
-    driver-class-name: org.mariadb.jdbc.Driver
-  jpa:
-    defer-datasource-initialization: true
-    hibernate.ddl-auto: create
-    open-in-view: false
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
-      hibernate.default_batch_fetch_size: 100
-  h2.console.enabled: false
-  sql.init.mode: always
-
-  data.rest:
-    base-path: /api
-    detection-strategy: annotated
+  profiles:
+    active: prod
 
 ---
-spring:
-  config.activate.on-profile: testdb
-#  datasource:
-#    url: jdbc:h2:mem:board;mode=mysql
-#    driverClassName: org.h2.Driver
-#  sql.init.mode: always
-#  test.database.replace: none
 
+spring:
+  profiles:
+    active: dev
