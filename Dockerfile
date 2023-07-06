@@ -5,8 +5,6 @@ WORKDIR /home/gradle/project
 
 COPY . .
 
-RUN echo "systemProp.http.proxyHost=krmp-proxy.9rum.cc\nsystemProp.http.proxyPort=3128\nsystemProp.https.proxyHost=krmp-proxy.9rum.cc\nsystemProp.https.proxyPort=3128" > /root/.gradle/gradle.properties
-
 RUN gradle build -x test
 
 # Stage 2: Run the application
@@ -14,7 +12,7 @@ FROM eclipse-temurin:17-jre
 
 WORKDIR /opt/techcampus
 
-COPY --from=build /home/gradle/project/build/libs/kakao-0.0.1-SNAPSHOT.jar .
+COPY --from=build /home/gradle/project/build/libs/jeju-backend-0.0.1-SNAPSHOT.jar .
 
 USER nobody
 
