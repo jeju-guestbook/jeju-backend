@@ -1,12 +1,49 @@
+# server:
+#   port: 3000
+
+# spring:
+#   profiles:
+#     active: prod
+
+# ---
+
+# spring:
+#   profiles:
+#     active: dev
+
 server:
   port: 3000
 
+debug: false
+management.endpoints.web.exposure.include: "*"
+
 spring:
-  profiles:
-    active: prod
+  datasource:
+    # url: ${DATABASE_URL}
+    #    url: jdbc:mysql://localhost:3306/board
+    url: jdbc:mariadb://mariadb-0.mariadb.default.svc/GOORM
+    username: root
+    password: "123456789"
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+  h2.console.enabled: false
+  sql.init.mode: always
+
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
 
 ---
-
 spring:
-  profiles:
-    active: dev
+  config.activate.on-profile: prod
+#  datasource:
+#    url: jdbc:h2:mem:board;mode=mysql
+#    driverClassName: org.h2.Driver
+#  sql.init.mode: always
+#  test.database.replace: none

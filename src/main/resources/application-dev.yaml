@@ -1,3 +1,40 @@
+# server:
+#   port: 3000
+
+# debug: false
+# management.endpoints.web.exposure.include: "*"
+
+# spring:
+#   h2:
+#     console:
+#       enabled: true
+#       path: /h2-console
+
+#   datasource:
+#     driver-class-name: org.h2.Driver
+#     url: jdbc:h2:/test
+#     username: sa
+
+#   jpa:
+#     defer-datasource-initialization: true
+#     hibernate.ddl-auto: update
+#     open-in-view: false
+#     show-sql: true
+#     properties:
+#       hibernate.format_sql: true
+#       hibernate.default_batch_fetch_size: 100
+
+#   data.rest:
+#     base-path: /api
+#     detection-strategy: annotated
+#   sql:
+#     init:
+#       mode: always
+
+# ---
+
+
+
 server:
   port: 3000
 
@@ -5,31 +42,33 @@ debug: false
 management.endpoints.web.exposure.include: "*"
 
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:/test
-    username: sa
-
+    # url: ${DATABASE_URL}
+    #    url: jdbc:mysql://localhost:3306/board
+    url: jdbc:mariadb://mariadb-0.mariadb.default.svc/GOORM
+    username: root
+    password: "123456789"
+    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     defer-datasource-initialization: true
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create
     open-in-view: false
-    show-sql: true
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
+  h2.console.enabled: false
+  sql.init.mode: always
 
   data.rest:
     base-path: /api
     detection-strategy: annotated
-  sql:
-    init:
-      mode: always
 
 ---
+spring:
+  config.activate.on-profile: prod
+#  datasource:
+#    url: jdbc:h2:mem:board;mode=mysql
+#    driverClassName: org.h2.Driver
+#  sql.init.mode: always
+#  test.database.replace: none
 
