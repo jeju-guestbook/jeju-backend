@@ -1,3 +1,5 @@
+server:
+  port: 3000
 
 debug: false
 management.endpoints.web.exposure.include: "*"
@@ -37,3 +39,4 @@ spring:
 #    driverClassName: org.h2.Driver
 #  sql.init.mode: always
 #  test.database.replace: none
+
