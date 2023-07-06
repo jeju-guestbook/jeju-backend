@@ -18,6 +18,6 @@ USER nobody
 
 EXPOSE 3000
 
-ENV DATABASE_URL=jdbc:mariadb://localhost:3306/kakao
+ENV DATABASE_URL=jdbc:mariadb://localhost:3306/mysql-container
 
-CMD ["java", "-jar", "kakao-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "jeju-backend-0.0.1-SNAPSHOT.jar"]
