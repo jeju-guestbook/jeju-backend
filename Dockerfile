@@ -22,4 +22,4 @@ EXPOSE 3000
 
 ENV DATABASE_URL=jdbc:mariadb://localhost:3306/kakao
 
-CMD ["java", "-jar", "kakao-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Dspring.profiles.active=prod", "-jar", "kakao-0.0.1-SNAPSHOT.jar"]
